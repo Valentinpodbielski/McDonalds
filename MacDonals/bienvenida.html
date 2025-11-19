@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McDonald's - App de Pedidos</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader"></div>
+        <p>Cargando...</p>
+    </div>
+
+    <!-- App Container -->
+    <div id="app" class="app-container">
+        
+        <!-- Auth View (Login/Register) -->
+        <div id="auth-view" class="view active">
+            <div class="auth-container">
+                <div class="auth-logo">
+                    <h1>McDonald's</h1>
+                    <p>I'm lovin' it</p>
+                </div>
+
+                <!-- Login Form -->
+                <div id="login-form" class="auth-form active">
+                    <h2>Iniciar Sesión</h2>
+                    <form onsubmit="login(event)">
+                        <div class="form-group">
+                            <label><i class="fas fa-envelope"></i> Email</label>
+                            <input type="email" id="login-email" placeholder="tu-email@gmail.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-lock"></i> Contraseña</label>
+                            <input type="password" id="login-password" placeholder="Mínimo 6 caracteres" required minlength="6">
+                        </div>
+                        <button type="submit" class="btn-primary">Ingresar</button>
+                    </form>
+                    <p class="auth-toggle">
+                        ¿No tienes cuenta? <a onclick="toggleAuthForm()">Regístrate aquí</a>
+                    </p>
+                </div>
+
+                <!-- Register Form -->
+                <div id="register-form" class="auth-form">
+                    <h2>Crear Cuenta</h2>
+                    <form onsubmit="register(event)">
+                        <div class="form-group">
+                            <label><i class="fas fa-user"></i> Nombre</label>
+                            <input type="text" id="register-name" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-envelope"></i> Email</label>
+                            <input type="email" id="register-email" placeholder="tu-email@gmail.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-lock"></i> Contraseña</label>
+                            <input type="password" id="register-password" placeholder="Mínimo 6 caracteres" required minlength="6">
+                        </div>
+                        <button type="submit" class="btn-primary">Registrarse</button>
+                    </form>
+                    <p class="auth-toggle">
+                        ¿Ya tienes cuenta? <a onclick="toggleAuthForm()">Inicia sesión aquí</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Location Request View -->
+        <div id="location-view" class="view">
+            <div class="location-container">
+                <i class="fas fa-map-marker-alt location-icon"></i>
+                <h2>Activar Ubicación</h2>
+                <p>Necesitamos tu ubicación para mostrarte los locales cercanos y sus menús disponibles.</p>
+                <button onclick="requestLocation()" class="btn-primary">
+                    <i class="fas fa-location-arrow"></i> Activar Ubicación
+                </button>
+            </div>
+        </div>
+
+        <!-- Store Selection View -->
+        <div id="store-view" class="view">
+            <div class="header">
+                <h2><i class="fas fa-store"></i> Selecciona un Local</h2>
+                <button onclick="logout()" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+            <div class="stores-grid" id="stores-list">
+                <!-- Stores will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Main App View -->
+        <div id="main-view" class="view">
+            <!-- Top Navigation -->
+            <nav class="app-nav">
+                <div class="nav-content">
+                    <h1>McDonald's</h1>
+                    <div class="nav-actions">
+                        <button onclick="showCart()" class="btn-cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cart-count" class="cart-badge">0</span>
+                        </button>
+                        <button onclick="showHistory()" class="btn-icon">
+                            <i class="fas fa-history"></i>
+                        </button>
+                        <button onclick="logout()" class="btn-icon">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Store Info Banner -->
+            <div class="store-banner">
+                <div class="store-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span id="current-store">Cargando...</span>
+                </div>
+                <button onclick="changeStore()" class="btn-change-store">Cambiar</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-container">
+                <h2>Menú Disponible</h2>
+                <div class="products-grid" id="products-list">
+                    <!-- Products will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Modal -->
+        <div id="cart-modal" class="modal">
+            <div class="modal-content cart-modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-shopping-cart"></i> Tu Pedido</h2>
+                    <button onclick="closeCart()" class="btn-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="cart-items" id="cart-items">
+                    <!-- Cart items will be loaded here -->
+                </div>
+
+                <div class="cart-coupon">
+                    <input type="text" id="coupon-input" placeholder="Código de descuento">
+                    <button onclick="applyCoupon()" class="btn-apply-coupon">Aplicar</button>
+                </div>
+
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="cart-subtotal">$0</span>
+                    </div>
+                    <div class="summary-row discount" id="discount-row" style="display: none;">
+                        <span>Descuento (<span id="discount-code"></span>):</span>
+                        <span id="cart-discount">-$0</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span id="cart-total">$0</span>
+                    </div>
+                </div>
+
+                <button onclick="proceedToPayment()" class="btn-primary btn-block" id="checkout-btn">
+                    Proceder al Pago
+                </button>
+            </div>
+        </div>
+
+        <!-- Payment Modal -->
+        <div id="payment-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-credit-card"></i> Método de Pago</h2>
+                    <button onclick="closePayment()" class="btn-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="payment-methods">
+                    <div class="payment-method" onclick="selectPayment('card')">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Tarjeta de Crédito/Débito</span>
+                        <input type="radio" name="payment" value="card">
+                    </div>
+                    <div class="payment-method" onclick="selectPayment('cash')">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span>Efectivo en el local</span>
+                        <input type="radio" name="payment" value="cash">
+                    </div>
+                    <div class="payment-method" onclick="selectPayment('mercadopago')">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Mercado Pago</span>
+                        <input type="radio" name="payment" value="mercadopago">
+                    </div>
+                </div>
+
+                <div class="payment-total">
+                    <h3>Total a pagar: <span id="payment-total">$0</span></h3>
+                </div>
+
+                <button onclick="confirmPayment()" class="btn-primary btn-block" id="confirm-payment-btn" disabled>
+                    Confirmar Pago
+                </button>
+            </div>
+        </div>
+
+        <!-- Order Status Modal -->
+        <div id="order-status-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-receipt"></i> Estado del Pedido</h2>
+                    <button onclick="closeOrderStatus()" class="btn-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="order-status-content">
+                    <div class="order-number">
+                        <h3>Pedido #<span id="order-number">0000</span></h3>
+                    </div>
+
+                    <div class="order-progress">
+                        <div class="progress-step active" id="step-received">
+                            <div class="progress-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <p>Pedido Recibido</p>
+                        </div>
+                        <div class="progress-step" id="step-preparing">
+                            <div class="progress-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <p>Preparando</p>
+                        </div>
+                        <div class="progress-step" id="step-ready">
+                            <div class="progress-icon">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <p>Listo para Retirar</p>
+                        </div>
+                    </div>
+
+                    <div class="order-actions">
+                        <button onclick="cancelOrder()" class="btn-cancel" id="cancel-order-btn">
+                            Cancelar Pedido
+                        </button>
+                        <button onclick="closeOrderStatus()" class="btn-primary">
+                            Cerrar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- History Modal -->
+        <div id="history-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-history"></i> Historial de Pedidos</h2>
+                    <button onclick="closeHistory()" class="btn-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="history-list" id="history-list">
+                    <!-- History items will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Detail Modal -->
+        <div id="product-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="product-modal-title">Producto</h2>
+                    <button onclick="closeProductModal()" class="btn-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="product-detail">
+                    <img id="product-modal-image" src="/placeholder.svg" alt="">
+                    <p id="product-modal-description"></p>
+                    <div class="product-price" id="product-modal-price">$0</div>
+                    
+                    <div class="product-options" id="product-options">
+                        <!-- Options will be loaded here -->
+                    </div>
+
+                    <div class="product-quantity">
+                        <label>Cantidad:</label>
+                        <div class="quantity-controls">
+                            <button onclick="decreaseQuantity()" class="btn-quantity">-</button>
+                            <span id="product-quantity">1</span>
+                            <button onclick="increaseQuantity()" class="btn-quantity">+</button>
+                        </div>
+                    </div>
+
+                    <button onclick="addToCartFromModal()" class="btn-primary btn-block">
+                        Agregar al Carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script2.js"></script>
+</body>
+</html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 40 Q15 10, 20 40" fill="#FFC72C" stroke="#DA291C" stroke-width="2"/>
+                        <path d="M30 40 Q35 10, 40 40" fill="#FFC72C" stroke="#DA291C" stroke-width="2"/>
+                    </svg>
+                    <span>McDonald's</span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#objetivos">Objetivos</a></li>
+                    <li><a href="#alcance">Alcance</a></li>
+                    <li><a href="#cuatro-p">Las 4P</a></li>
+                    <li><a href="#requerimientos">Requerimientos</a></li>
+                    <li><a href="#casos-uso">Casos de Uso</a></li>
+                    <li><a href="#equipo">Equipo</a></li>
+                </ul>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Sistema de Autogestión de Pedidos</h1>
+                <p class="hero-subtitle">Análisis y Diseño de Aplicación Móvil para McDonald's</p>
+                <div class="hero-info">
+                    <div class="info-card">
+                        <span class="info-label">Materia</span>
+                        <span class="info-value">Metodología de Sistemas I</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-label">Profesor</span>
+                        <span class="info-value">Gabriel Bonavento</span>
+                    </div>
+                </div>
+                <a href="bienvenida.html" class="btn-primary">Pagina Web MacDonal´s</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objetivos Section -->
+    <section id="objetivos" class="section section-light">
+        <div class="container">
+            <h2 class="section-title">Objetivo del Sistema</h2>
+            <div class="content-card">
+                <p class="text-large">
+                    El objetivo del sistema es brindar una <strong>interfaz gráfica</strong> que gestione el envío 
+                    de peticiones a las API y muestre las respuestas, integrando dos API principales:
+                </p>
+                <div class="api-grid">
+                    <div class="api-card">
+                        <div class="api-icon">🏪</div>
+                        <h3>API de Gestión Interna</h3>
+                        <p>Manejo de productos, stock, menús, precios y estado de pedidos del local</p>
+                    </div>
+                    <div class="api-card">
+                        <div class="api-icon">👥</div>
+                        <h3>API de Gestión de Usuarios</h3>
+                        <p>Registro, autenticación, historial de transacciones y métodos de pago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alcance Section -->
+    <section id="alcance" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Alcance del Sistema</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker start">📍</div>
+                    <div class="timeline-content">
+                        <h3>Inicio</h3>
+                        <p>El usuario activa su ubicación dentro de la aplicación</p>
+                    </div>
+                </div>
+                <div class="timeline-line"></div>
+                <div class="timeline-item">
+                    <div class="timeline-marker end">✅</div>
+                    <div class="timeline-content">
+                        <h3>Fin</h3>
+                        <p>El usuario retira su comida y el pedido pasa a estado finalizado</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4P Section -->
+    <section id="cuatro-p" class="section section-light">
+        <div class="container">
+            <h2 class="section-title">Las 4P del Proyecto</h2>
+            <div class="four-p-grid">
+                <div class="p-card">
+                    <div class="p-icon">📱</div>
+                    <h3>Proyecto</h3>
+                    <p>Aplicación móvil de autogestión de pedidos que se comunica con APIs externas para ofrecer 
+                    una experiencia completa. Forma parte de un proceso de modernización y adaptación tecnológica.</p>
+                    <ul class="feature-list">
+                        <li>Promociones exclusivas en la app</li>
+                        <li>Sistema de cupones de descuento</li>
+                        <li>Integración multi-API</li>
+                    </ul>
+                </div>
+
+                <div class="p-card">
+                    <div class="p-icon">⚙️</div>
+                    <h3>Proceso</h3>
+                    <ol class="process-list">
+                        <li>Análisis de necesidades del cliente</li>
+                        <li>Documentación del análisis</li>
+                        <li>Aplicación de metodologías ágiles</li>
+                        <li>Selección de stack de desarrollo</li>
+                        <li>Testing continuo durante desarrollo</li>
+                        <li>Validación con el cliente</li>
+                        <li>Liberación parcial (beta testing)</li>
+                        <li>Pulido y ajustes finales</li>
+                        <li>Publicación oficial</li>
+                    </ol>
+                </div>
+
+                <div class="p-card">
+                    <div class="p-icon">📦</div>
+                    <h3>Producto</h3>
+                    <p>Aplicación móvil multiplataforma para clientes de McDonald's, disponible en las principales 
+                    tiendas de aplicaciones.</p>
+                    <div class="platform-badges">
+                        <span class="badge">iOS</span>
+                        <span class="badge">Android</span>
+                        <span class="badge">Multiplataforma</span>
+                    </div>
+                </div>
+
+                <div class="p-card">
+                    <div class="p-icon">👥</div>
+                    <h3>Personas</h3>
+                    <div class="personas-grid">
+                        <div class="persona-group">
+                            <h4>Equipo de Desarrollo</h4>
+                            <ul>
+                                <li>Front-end Developers</li>
+                                <li>Diseñadores UX/UI</li>
+                                <li>Project Manager</li>
+                                <li>Arquitecto de Software</li>
+                                <li>Analista de Sistemas</li>
+                                <li>Testers / QA</li>
+                            </ul>
+                        </div>
+                        <div class="persona-group">
+                            <h4>Stakeholders</h4>
+                            <ul>
+                                <li>Clientes finales</li>
+                                <li>Personal del restaurante</li>
+                                <li>Inversionistas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requerimientos Section -->
+    <section id="requerimientos" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Requerimientos del Sistema</h2>
+            
+            <!-- Requerimientos Funcionales -->
+            <div class="requirements-container">
+                <h3 class="subsection-title">Requerimientos Funcionales</h3>
+                <div class="requirements-grid">
+                    <div class="requirement-card" data-number="1">
+                        <div class="req-icon">📝</div>
+                        <h4>Formularios de Acceso</h4>
+                        <p>Formulario para registrar cuenta y otro para inicio de sesión de usuarios existentes</p>
+                    </div>
+
+                    <div class="requirement-card" data-number="2">
+                        <div class="req-icon">📍</div>
+                        <h4>Activación de Ubicación</h4>
+                        <p>Solicitud obligatoria de ubicación con pantalla bloqueante hasta su activación</p>
+                    </div>
+
+                    <div class="requirement-card" data-number="3">
+                        <div class="req-icon">🗺️</div>
+                        <h4>Locales Cercanos</h4>
+                        <p>Visualización de locales cercanos y conexión a sus APIs locales</p>
+                    </div>
+
+                    <div class="requirement-card" data-number="4">
+                        <div class="req-icon">🍔</div>
+                        <h4>Catálogo de Productos</h4>
+                        <p>Listado completo de productos disponibles con precios del local seleccionado</p>
+                    </div>
+
+                    <div class="requirement-card" data-number="5">
+                        <div class="req-icon">🛒</div>
+                        <h4>Gestión del Carrito</h4>
+                        <p>Autogestión completa: agregar, eliminar, modificar cantidades y opciones de productos</p>
+                    </div>
+
+                    <div class="requirement-card" data-number="6">
+                        <div class="req-icon">🎟️</div>
+                        <h4>Códigos de Descuento</h4>
+                        <p>Sistema de cupones y códigos promocionales antes del pago</p>
+                    </div>
+
+                    <div class="requirement-card" data-number="7">
+                        <div class="req-icon">💳</div>
+                        <h4>Métodos de Pago</h4>
+                        <p>Selección y procesamiento de diferentes métodos de pago</p>
+                    </div>
+
+                    <div class="requirement-card" data-number="8">
+                        <div class="req-icon">📦</div>
+                        <h4>Seguimiento de Pedido</h4>
+                        <p>Tracking del estado del pedido con opción de cancelación en tiempo limitado</p>
+                    </div>
+
+                    <div class="requirement-card" data-number="9">
+                        <div class="req-icon">📊</div>
+                        <h4>Historial de Transacciones</h4>
+                        <p>Visualización del historial completo de pedidos realizados</p>
+                    </div>
+
+                    <div class="requirement-card" data-number="10">
+                        <div class="req-icon">✔️</div>
+                        <h4>Validaciones</h4>
+                        <p>Validaciones de formato en formularios y límites en cantidades de pedidos</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Requerimientos No Funcionales -->
+            <div class="requirements-container mt-large">
+                <h3 class="subsection-title">Requerimientos No Funcionales</h3>
+                <div class="nf-requirements">
+                    <div class="nf-card">
+                        <div class="nf-badge">RENDIMIENTO</div>
+                        <p>El menú principal debe cargarse en <strong>menos de 5 segundos</strong> con conexión estándar</p>
+                    </div>
+
+                    <div class="nf-card">
+                        <div class="nf-badge">SEGURIDAD</div>
+                        <p>Datos del usuario y pagos <strong>encriptados</strong> para máxima seguridad</p>
+                    </div>
+
+                    <div class="nf-card">
+                        <div class="nf-badge">ACCESIBILIDAD</div>
+                        <p>Interfaz <strong>intuitiva y fácil</strong> de usar para todos los usuarios</p>
+                    </div>
+
+                    <div class="nf-card">
+                        <div class="nf-badge">COMPATIBILIDAD</div>
+                        <p>Compatible con los <strong>sistemas operativos móviles</strong> más comunes</p>
+                    </div>
+
+                    <div class="nf-card">
+                        <div class="nf-badge">DISPONIBILIDAD</div>
+                        <p>Disponible <strong>24/7</strong> para no perder pedidos ni clientes</p>
+                    </div>
+
+                    <div class="nf-card">
+                        <div class="nf-badge">MANTENIMIENTO</div>
+                        <p>Facilidad de <strong>actualización</strong> y reparación de fallos</p>
+                    </div>
+
+                    <div class="nf-card">
+                        <div class="nf-badge">FIABILIDAD</div>
+                        <p>Información <strong>actualizada</strong> en tiempo real de productos y precios</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Casos de Uso Section -->
+    <section id="casos-uso" class="section section-light">
+        <div class="container">
+            <h2 class="section-title">Casos de Uso y Actores</h2>
+            
+            <div class="use-cases-container">
+                <div class="actors-section">
+                    <h3 class="subsection-title">Actores del Sistema</h3>
+                    <div class="actors-grid">
+                        <div class="actor-card">
+                            <div class="actor-icon">👤</div>
+                            <h4>Cliente/Usuario</h4>
+                            <p>Usuario final de la aplicación que realiza pedidos</p>
+                        </div>
+                        <div class="actor-card">
+                            <div class="actor-icon">🔌</div>
+                            <h4>API de Usuarios</h4>
+                            <p>Sistema externo de gestión de cuentas</p>
+                        </div>
+                        <div class="actor-card">
+                            <div class="actor-icon">🏪</div>
+                            <h4>API del Local</h4>
+                            <p>Sistema de gestión interna del restaurante</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="use-cases-section">
+                    <h3 class="subsection-title">Principales Casos de Uso</h3>
+                    <div class="use-cases-list">
+                        <div class="use-case-item">
+                            <div class="uc-number">UC-01</div>
+                            <div class="uc-content">
+                                <h4>Registrar Cuenta</h4>
+                                <p><strong>Actor:</strong> Cliente, API de Usuarios</p>
+                                <p><strong>Descripción:</strong> El cliente crea una nueva cuenta con email y contraseña</p>
+                            </div>
+                        </div>
+
+                        <div class="use-case-item">
+                            <div class="uc-number">UC-02</div>
+                            <div class="uc-content">
+                                <h4>Iniciar Sesión</h4>
+                                <p><strong>Actor:</strong> Cliente, API de Usuarios</p>
+                                <p><strong>Descripción:</strong> El cliente accede con sus credenciales</p>
+                            </div>
+                        </div>
+
+                        <div class="use-case-item">
+                            <div class="uc-number">UC-03</div>
+                            <div class="uc-content">
+                                <h4>Activar Ubicación</h4>
+                                <p><strong>Actor:</strong> Cliente</p>
+                                <p><strong>Descripción:</strong> El sistema solicita permisos de ubicación al usuario</p>
+                            </div>
+                        </div>
+
+                        <div class="use-case-item">
+                            <div class="uc-number">UC-04</div>
+                            <div class="uc-content">
+                                <h4>Ver Locales Cercanos</h4>
+                                <p><strong>Actor:</strong> Cliente, API de Usuarios</p>
+                                <p><strong>Descripción:</strong> El sistema muestra locales según ubicación</p>
+                            </div>
+                        </div>
+
+                        <div class="use-case-item">
+                            <div class="uc-number">UC-05</div>
+                            <div class="uc-content">
+                                <h4>Consultar Menú</h4>
+                                <p><strong>Actor:</strong> Cliente, API del Local</p>
+                                <p><strong>Descripción:</strong> El usuario visualiza productos disponibles</p>
+                            </div>
+                        </div>
+
+                        <div class="use-case-item">
+                            <div class="uc-number">UC-06</div>
+                            <div class="uc-content">
+                                <h4>Gestionar Carrito</h4>
+                                <p><strong>Actor:</strong> Cliente</p>
+                                <p><strong>Descripción:</strong> El usuario agrega, modifica o elimina productos</p>
+                            </div>
+                        </div>
+
+                        <div class="use-case-item">
+                            <div class="uc-number">UC-07</div>
+                            <div class="uc-content">
+                                <h4>Aplicar Cupón de Descuento</h4>
+                                <p><strong>Actor:</strong> Cliente, API del Local</p>
+                                <p><strong>Descripción:</strong> El usuario ingresa y valida códigos promocionales</p>
+                            </div>
+                        </div>
+
+                        <div class="use-case-item">
+                            <div class="uc-number">UC-08</div>
+                            <div class="uc-content">
+                                <h4>Procesar Pago</h4>
+                                <p><strong>Actor:</strong> Cliente, API de Usuarios</p>
+                                <p><strong>Descripción:</strong> El sistema gestiona el pago del pedido</p>
+                            </div>
+                        </div>
+
+                        <div class="use-case-item">
+                            <div class="uc-number">UC-09</div>
+                            <div class="uc-content">
+                                <h4>Hacer Seguimiento de Pedido</h4>
+                                <p><strong>Actor:</strong> Cliente, API del Local</p>
+                                <p><strong>Descripción:</strong> El usuario monitorea el estado del pedido en tiempo real</p>
+                            </div>
+                        </div>
+
+                        <div class="use-case-item">
+                            <div class="uc-number">UC-10</div>
+                            <div class="uc-content">
+                                <h4>Ver Historial</h4>
+                                <p><strong>Actor:</strong> Cliente, API de Usuarios</p>
+                                <p><strong>Descripción:</strong> El usuario consulta pedidos anteriores</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipo Section -->
+    <section id="equipo" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Integrantes del Equipo</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">LM</div>
+                    <h3>Leon Gabriel Martinez Aquino</h3>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">GE</div>
+                    <h3>Guia Leandro Emanuel</h3>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">VP</div>
+                    <h3>Valentin Podbielski</h3>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">PR</div>
+                    <h3>Paul Ramirez</h3>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">BC</div>
+                    <h3>Bruce Carr</h3>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">MD</div>
+                    <h3>Maximo Dominguez</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Análisis de Sistemas - McDonald's. Proyecto académico para Metodología de Sistemas I</p>
+            <p>Profesor: Gabriel Bonavento</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
